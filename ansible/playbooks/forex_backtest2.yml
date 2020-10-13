@@ -1,0 +1,16 @@
+---
+ - hosts: all
+
+   remote_user: provision
+
+   tasks:
+     - name: Copy DO test definitions
+       synchronize:
+         src: ~/git/AT-ML_testing/do_test.sh
+         dest: ~/forex/
+     - name: Execute Tests
+       shell: ./do_test.sh
+       args:
+         chdir: ~/forex/
+         executable: /bin/bash
+       async: 2000

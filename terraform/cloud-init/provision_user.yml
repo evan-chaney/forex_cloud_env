@@ -1,0 +1,10 @@
+users:
+  - default
+  - name: provision
+    primary_group: users
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDPJ90uNYEr1wQetej1ov4PZkRC8VkPLlo+gO+Mp+tAM20a39+Ra95xTymh0Eyp6sr/2yumhUr3ZnVRMnp/7aidn14zA8BrPi5hfDXqK9CvpTj7VCJNXZvls3VciZ+ygi1npzicJ0hNFYjAqeo2VMjDymmLLT6QCwiwiQyRzCrnYxG53tcgnuBg3Qk22sBW0XHxLG8sUOFgQib0IcfSNyBZF/1sE5oALyZ68epuARmvcATln7VvwnXmqAeOp7aJmKHeWcUHN424chHVL46l6MLA7j6oEepSCH3xEF88yiGsbYXi8IjojD9Tp91ssQeUyC7ye9IloPVePstfLZnrpB1 evan@Wraith2-Ubuntu'
+
+final_message: "The system is finally up, after $UPTIME seconds"

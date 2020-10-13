@@ -1,0 +1,27 @@
+---
+ - hosts: all
+   gather_facts: false
+   remote_user: provision
+
+   tasks:
+     - name: Add DO RPM key
+       rpm_key:
+         state: present
+         key: https://repos.insights.digitalocean.com/sonar-agent.asc
+       become: yes
+     - name: Set up do-repo
+       yum_repository:
+         name: do_agent
+         description: Digital Ocean Agent Repo
+         baseurl: https://repos.insights.digitalocean.com/yum/do-agent/$basearch
+         failovermethod: priority
+         enabled: yes
+         gpgcheck: yes
+         gpgkey: https://repos.insights.digitalocean.com/sonar-agent.asc
+       become: yes
+
+     - name:
+       package:
+         name: do-agent
+         state: present
+       become: yes

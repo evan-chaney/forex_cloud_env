@@ -1,0 +1,48 @@
+ca-certs:
+  # If present and set to True, the 'remove-defaults' parameter will remove
+  # all the default trusted CA certificates that are normally shipped with
+  # Ubuntu.
+  # This is mainly for paranoid admins - most users will not need this
+  # functionality.
+  remove-defaults: false
+
+  # If present, the 'trusted' parameter should contain a certificate (or list
+  # of certificates) to add to the system as trusted CA certificates.
+  # Pay close attention to the YAML multiline list syntax.  The example shown
+  # here is for a list of multiline certificates.
+  trusted:
+  - |
+    -----BEGIN CERTIFICATE-----
+    MIIF8jCCA9qgAwIBAgIRAIMlc9qUUUOAicPbxihfxQgwDQYJKoZIhvcNAQELBQAw
+    gZkxGTAXBgNVBAMMEGNoYW5leWhvbWVsYWJDQTExLTArBgkqhkiG9w0BCQEWHndh
+    aXRpbmdmb3JzdW5kYXlsZWFkQGdtYWlsLmNvbTEPMA0GA1UECgwGQ2hhbmV5MRAw
+    DgYDVQQLDAdIb21lbGFiMQswCQYDVQQGEwJVUzELMAkGA1UECAwCV0kxEDAOBgNV
+    BAcMB01hZGlzb24wHhcNMTgwOTI2MDIzNzM5WhcNMzIwOTI2MDIzNzM5WjCBmTEZ
+    MBcGA1UEAwwQY2hhbmV5aG9tZWxhYkNBMTEtMCsGCSqGSIb3DQEJARYed2FpdGlu
+    Z2ZvcnN1bmRheWxlYWRAZ21haWwuY29tMQ8wDQYDVQQKDAZDaGFuZXkxEDAOBgNV
+    BAsMB0hvbWVsYWIxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJXSTEQMA4GA1UEBwwH
+    TWFkaXNvbjCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAN6oCD0EMg3i
+    DSVajMmRZMKxfBbvSOyCxYDZNLIg6/2vvJ9idZcl4FkY4G7hyplI0upkW8iUDVxL
+    v00qUddfArtnI1Q76I7BWOWk4rLuK1fyr+O2AOJ8esXkl6N8TiAPXtGkuvtPqi19
+    KYiteEaADATDXaaYHZYy3B6P9lswHd1RNlBZakv5A8c6rYWS/tBdwXl1O6VxiVt0
+    F87fOTDKoAvmoPFfPAuOzsUO6az3WFmLd19CZ/1VrqvAsYPtns3F//TJ/HEqOISA
+    5hUbXdS869VvwmCH/drpyZ+vLdkzl2HTkifKEz5+tczxfZzit8YTMq0Vb8wRcXHC
+    xf5ga3U744xkuFbNy4dJSraNHNC2tMZZODP41+DOJmttPUAtr98ctUTomngGHAR+
+    B5yGQuxEr4xCMWEJVEnw9UXoqDlzf12t45xU1mN7SQiTdPQtpJ4lx2PkVUn7HwNV
+    w7wh7d5zxGdfGWtx7NmbnbDyj1yoGzEx7mhTL7OWojJo0sy4QjdN1j2XfLZ6IOfU
+    79XAE8mssadC2EFNo8UJhhZcqqa9gcUgN4QMRqdTfuNY6/OgTR4Z++jiD+dYZ8ni
+    rnk/Egm8KtGBSHXfwxT1Dv4gai0VICLM/+7siOqyRL/V1DMKq3TovJaVtHMd6ddW
+    iI2mMy5G32Bg929br/+Cg0hSPPHMDLihAgMBAAGjMzAxMA8GA1UdEwEB/wQFMAMB
+    Af8wHgYDVR0RAQH/BBQwEoIQY2hhbmV5aG9tZWxhYkNBMTANBgkqhkiG9w0BAQsF
+    AAOCAgEAztykQrSJ19M+n0UYVlMIVDa34iZZjojGLr3KvActrOofwAAgQn1/ymkV
+    1KDubXyxKLESNTbisJXD/gRuxQfITT6XBCvUejSwvL6PHuMOhDoEtb7ugUo1qjzP
+    XVV8Q066f0USffrmnQNPWbM7ttzq1Nyh8iJOgbDnruJMWy1ossvZ9x32RnJV9uXj
+    FIH7Cax1h+XMDXw3hAbZLvKUSJtq+zjhQrAvNLasNzTHFiFITBmM0XrwdRiEuzkH
+    TI2uf4DZAlNWrW4oENsjATTBcLEVwx8eUXRHHizC2YNR+T7BwYShfaFe/52ZaN0Y
+    eewCFEWOba8vPRIXHlzL1uFasjfrCyj4/bKOGifCz/6ZnKI61mGHQx6TcgeqhHfl
+    V3RwARK4KLrcRsoMjBgbeNb3c0HWyXSBjxP2n35oR1uWCEUq80WVkLgDIAdxwSL8
+    bIgrt7MvCSCMNzz3YEPRT+MdDHQ2qHbzRIb8W8f1gCFvD1Sg0i2EgyW+P59Pw80j
+    sWXwSpH2+qVVtGQes3HmXsorX1zgm4HmBoYeFyZxUDRZyr1w2B4APRJuLbRhjF/V
+    qi0fzmzhlkpA7MbxlOAF2zBc+nGPW1LkFdrXEHSnezHQ9zID2/t5ZUvT1mB8o1vu
+    4hdJ9spVGOZ+pj+ZxU538PggH98WceU3LPnnAsjxqEYUkz2i10c=
+    -----END CERTIFICATE-----

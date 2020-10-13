@@ -1,0 +1,100 @@
+---
+ - hosts: all
+
+   remote_user: provision
+
+   tasks:
+   - name: Install epel-release
+     package:
+       name: epel-release
+       state: present
+     become: yes
+   - name: Install Packages
+     package:
+       name: [python36-virtualenv, python36-pip, git, gcc]
+       state: present
+     become: yes
+#   - name: Install Python3-pip
+#     package:
+#       name: python36-pip
+#       state: present
+#     become: yes
+#   - name: Install git
+#     package:
+#       name: git
+#       state: present
+#     become: yes
+#   - name: Install gcc
+#     package:
+#       name: gcc
+#       state: present
+#     become: yes
+   - name: Create forex folder
+     file:
+       path: ~/forex
+       owner: provision
+       group: provision
+       state: directory
+   - name: Create venv folder
+     file:
+       path: ~/forex/venv
+       owner: provision
+       group: provision
+       state: directory
+   - name: Create datasets folder
+     file:
+       path: ~/forex/DataSets
+       owner: provision
+       group: provision
+       state: directory
+   - name: Copy requirements.txt
+     synchronize:
+       src: ~/git/AT-ML_testing/requirements.txt
+       dest: ~/forex/
+       rsync_opts:
+         - -avz
+   - name: Copy datasets (via 2.chaneybros.com)
+     synchronize:
+       src: /home/provision/DataSets/
+       dest: ~/forex/DataSets/
+       rsync_opts:
+         - "--size-only"
+     delegate_to: 2.chaneybros.com
+   - name: Copy test wrapper
+     synchronize:
+       src: ~/git/AT-ML_testing/test_wrapper.py
+       dest: ~/forex/
+   - name: Copy KNN3
+     synchronize:
+       src: ~/git/AT-ML_testing/ML_BinaryKNN3.py
+       dest: ~/forex/
+   - name: Copy test wrapper
+     synchronize:
+       src: ~/git/AT-ML_testing/ML_GNB2.py
+       dest: ~/forex/
+   - name: Copy test runner script
+     synchronize:
+       src: ~/git/AT-ML_testing/test_runner.sh
+       dest: ~/forex/
+   - name: Copy DO test definitions
+     synchronize:
+       src: ~/git/AT-ML_testing/do_test.sh
+       dest: ~/forex/
+   - name: Set up virtualenv
+     shell: virtualenv-3 venv -p /bin/python36
+     args:
+       chdir: /home/provision/forex
+       creates: ~/forex/venv/bin/pip3
+   - name: Install requirements
+     shell: ~/forex/venv/bin/pip3 install -r ~/forex/requirements.txt
+     args:
+       chdir:  /home/provision/forex
+
+#   - name: Set up virtualenv
+#     pip:
+#       requirements: ~/forex/requirements.txt
+#       virtualenv: ~/forex/venv
+#       virtualenv_command: virtualenv-3
+#       virtualenv_python: python3
+
+

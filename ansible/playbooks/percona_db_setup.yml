@@ -1,0 +1,67 @@
+---
+ - hosts: all
+
+   remote_user: provision
+   become: yes
+   become_method: sudo
+
+   vars:
+     certbot_create_if_missing: true
+     certbot_install_from_source: true
+     certbot_create_method: standalone
+     certbot_admin_email: evanachaney@gmail.com
+     certbot_auto_renew: true
+     certbot_auto_renew_hour: 3
+     certbot_auto_renew_minute: 30
+     certbot_auto_renew_options: "--quiet --no-self-upgrade"
+   roles:
+     - geerlingguy.git
+     - geerlingguy.certbot
+   tasks:
+
+   - setup:
+   - name: Install Percona Repo
+     yum:
+       name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+       state: present
+   - name: Put SELinux in permissive mode, logging actions that would be blocked.
+     selinux:
+       policy: targeted
+       state: permissive
+   - name: install firewalld
+     yum:
+       name: firewalld
+       state: present
+   - name: Start service firewalld, if not started
+     service:
+       name: firewalld
+       state: started
+   - name: Install python firewalld packages
+     yum:
+       name: python-firewall
+       state: present
+   - firewalld:
+       port: 3306/tcp
+       permanent: yes
+       state: enabled
+   - firewalld:
+       port: 4444/tcp
+       permanent: yes
+       state: enabled
+   - firewalld:
+       port: 4567/tcp
+       permanent: yes
+       state: enabled
+   - firewalld:
+       port: 4568/tcp
+       permanent: yes
+       state: enabled
+
+   - name: Install Percona Packages
+     yum:
+       name: Percona-XtraDB-Cluster-57
+       state: present
+   - name: Start service mysql, if not started
+     service:
+       name: mysql
+       state: started

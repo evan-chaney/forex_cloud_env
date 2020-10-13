@@ -1,0 +1,11 @@
+---
+ - hosts: all
+
+   remote_user: evan
+
+   tasks:
+     - name: Update AT Git repo
+       shell: git pull
+       args:
+         chdir: ~/git/AT-ML_testing/
+         executable: /bin/bash

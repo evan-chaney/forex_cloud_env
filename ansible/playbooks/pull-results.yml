@@ -1,0 +1,11 @@
+---
+ - hosts: all
+
+   remote_user: provision
+
+   tasks:
+   - name: Pull results file
+     synchronize:
+       src: ~/forex/Results/
+       dest: ~/git/AT-ML_testing/Results/{{inventory_hostname}}/
+       mode: pull
